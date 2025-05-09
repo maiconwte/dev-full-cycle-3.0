@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon --exec ts-node-esm ./index.ts",
     "authorization-code": "nodemon --exec ts-node-esm ./authorization-code-flow/src/index.ts",
     "implicit": "cd implicit-flow && npm run dev",
     "hybrid": "cd hybrid-flow && npm run dev",
