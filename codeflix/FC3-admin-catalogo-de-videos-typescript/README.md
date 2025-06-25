@@ -1,0 +1,1 @@
+# FC3-videos-catalog-admin-service
