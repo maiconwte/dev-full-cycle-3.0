@@ -2,3 +2,4 @@ docker
 challenges/**/node_modules
 challenges/**/mysql/**
 challenge/5.event-driven-architecture/wallet-core-service/docker
+codeflix/FC3-admin-catalogo-de-videos-typescript/node_modules
