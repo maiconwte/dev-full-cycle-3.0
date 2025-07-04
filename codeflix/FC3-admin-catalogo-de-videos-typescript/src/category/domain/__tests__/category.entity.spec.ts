@@ -1,3 +1,4 @@
+import { Uuid } from '../../../shared/domain/value-objects/uuid.vo';
 import { CategoryEntity } from "../category.entity";
 
 describe("CategoryEntity Unit Tests", () => {
@@ -41,7 +42,7 @@ describe("CategoryEntity Unit Tests", () => {
       let category = new CategoryEntity({
         name: "Movie",
       });
-      expect(category.category_id).toBeDefined();
+      expect(category.category_id).toBeInstanceOf(Uuid);
       expect(category.name).toBe("Movie");
       expect(category.description).toBeNull();
       expect(category.is_active).toBe(true);
@@ -57,7 +58,7 @@ describe("CategoryEntity Unit Tests", () => {
         created_at: created_at,
       });
 
-      expect(category.category_id).toBeDefined();
+      expect(category.category_id).toBeInstanceOf(Uuid);
       expect(category.name).toBe("Movie");
       expect(category.description).toBe("Movie description");
       expect(category.is_active).toBe(false);
@@ -70,11 +71,29 @@ describe("CategoryEntity Unit Tests", () => {
         description: null,
       });
 
-      expect(category.category_id).toBeDefined();
+      expect(category.category_id).toBeInstanceOf(Uuid);
       expect(category.name).toBe("Movie");
       expect(category.description).toBeNull();
       expect(category.is_active).toBe(true);
       expect(category.created_at).toBeInstanceOf(Date);
+    });
+  });
+
+  describe('category_id field', () => {
+    const arrange = [{
+      category_id: null,
+    }, {
+      category_id: undefined,
+    }, {
+      category_id: new Uuid(),
+    }];
+
+    test.each(arrange)('should be is %j', ({ category_id }) => {
+      const category = new CategoryEntity({
+        name: "Movie",
+        category_id,
+      } as any);
+      expect(category.category_id).toBeInstanceOf(Uuid);
     });
   });
 
@@ -84,7 +103,7 @@ describe("CategoryEntity Unit Tests", () => {
         name: "Movie",
       });
 
-      expect(category.category_id).toBeDefined();
+      expect(category.category_id).toBeInstanceOf(Uuid);
       expect(category.name).toBe("Movie");
       expect(category.description).toBeNull();
       expect(category.is_active).toBe(true);
