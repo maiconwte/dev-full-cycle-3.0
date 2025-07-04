@@ -225,7 +225,7 @@ const config: Config = {
     },
   },
   testEnvironment: 'node',
-  setupFilesAfterEnv: ['./core/shared/infra/testing/expect-helpers.ts'],
+  //setupFilesAfterEnv: ['./core/shared/infra/testing/expect-helpers.ts'],
   coverageProvider: 'v8',
   clearMocks: true,
 };
