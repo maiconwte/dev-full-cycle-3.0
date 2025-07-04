@@ -2,7 +2,7 @@ import { CategoryEntity } from "../category.entity";
 
 describe("CategoryEntity Unit Tests", () => {
     it("should change name", () => {
-        const category = new CategoryEntity({
+        const category = CategoryEntity.create({
             name: "Movie",
         });
         category.changeName("Movie 2");
@@ -10,7 +10,7 @@ describe("CategoryEntity Unit Tests", () => {
     });
 
     it("should change description", () => {
-        const category = new CategoryEntity({
+        const category = CategoryEntity.create({
             name: "Movie",
         });
         category.changeDescription("Movie description 2");
@@ -18,7 +18,7 @@ describe("CategoryEntity Unit Tests", () => {
     });
 
     it("should change active", () => {
-        const category = new CategoryEntity({
+        const category = CategoryEntity.create({
             name: "Movie",
             is_active: false,
         });
@@ -27,7 +27,7 @@ describe("CategoryEntity Unit Tests", () => {
     });
 
     it("should change deactive", () => {
-        const category = new CategoryEntity({
+        const category = CategoryEntity.create({
             name: "Movie",
             is_active: true,
         });
