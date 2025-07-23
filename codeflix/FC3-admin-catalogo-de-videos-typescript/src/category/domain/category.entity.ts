@@ -1,6 +1,8 @@
 import { EntityValidationError } from '../../shared/domain/validators/validation.error';
 import { Uuid } from "../../shared/domain/value-objects/uuid.vo";
 import { CategoryValidatorFactory } from "./category.validator";
+import { Entity } from "../../shared/domain/entity";
+import { ValueObject } from '../../shared/domain/value-object';
 
 export type CategoryConstructorProps = {
   category_id?: Uuid;
@@ -20,7 +22,7 @@ export type CategoryCreateCommand = {
  * Category entity
  * @description This entity represents a category of a product
  */
-export class CategoryEntity {
+export class CategoryEntity extends Entity {
   category_id: Uuid;
   name: string;
   description: string | null;
@@ -28,11 +30,17 @@ export class CategoryEntity {
   created_at: Date;
 
   constructor(props: CategoryConstructorProps) {
+    super();
+
     this.category_id = props.category_id ?? new Uuid();
     this.name = props.name;
     this.description = props.description ?? null;
     this.is_active = props.is_active ?? true;
     this.created_at = props.created_at ?? new Date();
+  }
+
+  get entity_id(): ValueObject {
+    return this.category_id;
   }
 
   /**
