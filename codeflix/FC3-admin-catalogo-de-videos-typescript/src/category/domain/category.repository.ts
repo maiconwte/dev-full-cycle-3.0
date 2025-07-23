@@ -1,9 +1,6 @@
+import { IRepository } from "../../shared/domain/repository/repository-interface";
 import { CategoryEntity } from "./category.entity";
+import { Uuid } from "../../shared/domain/value-objects/uuid.vo";
 
-export interface CategoryRepository {
-  insert(category: CategoryEntity): Promise<void>;
-  find(): Promise<CategoryEntity[]>;
-  findById(id: string): Promise<CategoryEntity>;
-  update(category: CategoryEntity): Promise<void>;
-  delete(id: string): Promise<void>;
-}
+export interface ICategoryRepository
+  extends IRepository<CategoryEntity, Uuid> { }
