@@ -52,3 +52,17 @@ run
 ```
 cd challenges/5.event-driven-architecture/ && docker compose up -d
 ```
+
+## 6 Codeflix - Repositório e validação da entidade Categoria
+
+Clone o repositório com o código desenvolvido
+
+```
+git clone https://github.com/maiconwte/dev-full-cycle-3.0.git
+```
+
+Instale as dependências e execute os testes
+
+```
+cd dev-full-cycle-3.0/codeflix/FC3-admin-catalogo-de-videos-typescript && npm i && npm run test
+```
