@@ -4,6 +4,7 @@ import { CategoryValidatorFactory } from "./category.validator";
 import { Entity } from "../../shared/domain/entity";
 import { ValueObject } from '../../shared/domain/value-object';
 
+// Refactor to use the Category Aggregate
 export type CategoryConstructorProps = {
   category_id?: Uuid;
   name: string;

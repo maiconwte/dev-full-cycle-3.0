@@ -1,4 +1,4 @@
-import { CategoryEntity } from '../../../domain/category.entity';
+import { Category } from '../../../domain/category.aggregate';
 import { CategoryInMemoryRepository } from './category-in-memory.repository';
 
 describe('CategoryInMemoryRepository', () => {
@@ -6,7 +6,7 @@ describe('CategoryInMemoryRepository', () => {
 
   beforeEach(() => (repository = new CategoryInMemoryRepository()));
   it('should no filter items when filter object is null', async () => {
-    const items = [new CategoryEntity({ name: 'test' })];
+    const items = [Category.fake().aCategory().build()];
     const filterSpy = jest.spyOn(items, 'filter' as any);
 
     const itemsFiltered = await repository['applyFilter'](items, null);
@@ -16,9 +16,9 @@ describe('CategoryInMemoryRepository', () => {
 
   it('should filter items using filter parameter', async () => {
     const items = [
-      new CategoryEntity({ name: 'test' }),
-      new CategoryEntity({ name: 'TEST' }),
-      new CategoryEntity({ name: 'fake' }),
+      Category.fake().aCategory().withName('test').build(),
+      Category.fake().aCategory().withName('TEST').build(),
+      Category.fake().aCategory().withName('fake').build(),
     ];
     const filterSpy = jest.spyOn(items, 'filter' as any);
 
@@ -31,9 +31,21 @@ describe('CategoryInMemoryRepository', () => {
     const created_at = new Date();
 
     const items = [
-      new CategoryEntity({ name: 'test', created_at: created_at }),
-      new CategoryEntity({ name: 'TEST', created_at: new Date(created_at.getTime() + 100) }),
-      new CategoryEntity({ name: 'fake', created_at: new Date(created_at.getTime() + 200) }),
+      Category.fake()
+        .aCategory()
+        .withName('test')
+        .withCreatedAt(created_at)
+        .build(),
+      Category.fake()
+        .aCategory()
+        .withName('TEST')
+        .withCreatedAt(new Date(created_at.getTime() + 100))
+        .build(),
+      Category.fake()
+        .aCategory()
+        .withName('fake')
+        .withCreatedAt(new Date(created_at.getTime() + 200))
+        .build(),
     ];
 
     const itemsSorted = await repository['applySort'](items, null, null);
@@ -42,9 +54,9 @@ describe('CategoryInMemoryRepository', () => {
 
   it('should sort by name', async () => {
     const items = [
-      new CategoryEntity({ name: 'c' }),
-      new CategoryEntity({ name: 'b' }),
-      new CategoryEntity({ name: 'a' }),
+      Category.fake().aCategory().withName('c').build(),
+      Category.fake().aCategory().withName('b').build(),
+      Category.fake().aCategory().withName('a').build(),
     ];
 
     let itemsSorted = await repository['applySort'](items, 'name', 'asc');
