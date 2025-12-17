@@ -35,10 +35,6 @@ export abstract class InMemoryRepository<E extends Entity, EntityId extends Valu
     return this.items;
   }
 
-  async search(props: any): Promise<E[]> {
-    throw new Error('Method not implemented.');
-  }
-
   async bulkInsert(entities: E[]): Promise<void> {
     this.items.push(...entities);
   }
