@@ -1,29 +1,22 @@
-import { IsString, MaxLength, IsNotEmpty, IsOptional, IsBoolean } from "class-validator";
-import { CategoryEntity } from "./category.entity";
+import { MaxLength } from 'class-validator';
+import { Category } from './category.aggregate';
 import { ClassValidatorFields } from '../../shared/domain/validators/class-validator-fields';
+import { Notification } from '../../shared/domain/validators/notification';
 
+//criar um testes que verifique os decorators
 export class CategoryRules {
-  @MaxLength(255, { groups: ["name"] })
-  @IsString()
-  @IsNotEmpty()
+  @MaxLength(255, { groups: ['name'] })
   name: string;
 
-  @IsString()
-  @IsOptional()
-  description: string | null;
-
-  @IsBoolean()
-  @IsOptional()
-  is_active: boolean;
-
-  constructor(entity: CategoryEntity) {
+  constructor(entity: Category) {
     Object.assign(this, entity);
   }
 }
 
-export class CategoryValidator extends ClassValidatorFields<CategoryRules> {
-  validate(category: CategoryEntity): boolean {
-    return super.validate(new CategoryRules(category));
+export class CategoryValidator extends ClassValidatorFields {
+  validate(notification: Notification, data: any, fields?: string[]): boolean {
+    const newFields = fields?.length ? fields : ['name'];
+    return super.validate(notification, new CategoryRules(data), newFields);
   }
 }
 

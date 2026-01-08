@@ -4,7 +4,8 @@
   "description": "FC3-admin-catalogo-de-videos-typescript",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "rm -rf dist && tsc"
   },
   "author": "",
   "license": "ISC",
@@ -16,16 +17,18 @@
     "@types/jest": "^29.5.4",
     "@types/lodash": "^4.17.20",
     "jest": "^29.6.4",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.2.2",
     "sequelize": "^6.33.0",
-    "sequelize-typescript": "^2.1.5"
+    "sequelize-typescript": "^2.1.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.2.2"
   },
   "dependencies": {
     "chance": "^1.1.13",
     "class-validator": "^0.14.2",
+    "dotenv": "^17.2.3",
     "eventemitter2": "^6.4.9",
     "lodash": "^4.17.21",
+    "sqlite3": "^5.1.7",
     "uuid": "^11.1.0"
   }
 }

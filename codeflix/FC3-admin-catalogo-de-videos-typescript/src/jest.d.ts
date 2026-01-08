@@ -1,9 +1,12 @@
-import { FieldsErrors } from "./src/shared/domain/validators/validator-fields-interface";
+import { ValueObject } from '../shared/domain/value-object';
+import { FieldsErrors } from './shared/domain/validators/validator-fields-interface';
 
 declare global {
   namespace jest {
     interface Matchers<R> {
-      toContainErrorMessages(expected: FieldsErrors): R;
+      //containsErrorMessages: (expected: FieldsErrors) => R;
+      notificationContainsErrorMessages: (expected: Array<FieldsErrors>) => R;
+      toBeValueObject: (expected: ValueObject) => R;
     }
   }
 }
