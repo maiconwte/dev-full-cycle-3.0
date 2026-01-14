@@ -38,7 +38,8 @@ export class Config {
     }
 
     const { parsed } = readEnv({
-      path: join(__dirname, `../../../../envs/.env.${process.env.NODE_ENV}`),
+      // path: join(__dirname, `../../../../envs/.env.${process.env.NODE_ENV}`),
+      path: join(__dirname, `../../../envs/.env.${process.env.NODE_ENV}`),
     });
 
     Config.env = {
