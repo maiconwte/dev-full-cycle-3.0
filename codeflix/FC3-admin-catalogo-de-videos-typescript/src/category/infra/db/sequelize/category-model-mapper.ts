@@ -23,9 +23,11 @@ export class CategoryModelMapper {
     });
 
     category.validate();
-    // if (category.notification.hasErrors()) {
-    //   throw new LoadEntityError(category.notification.toJSON());
-    // }
+
+    if (category.notification.hasErrors()) {
+      throw new LoadEntityError(category.notification.toJSON());
+    }
+
     return category;
   }
 }
