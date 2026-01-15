@@ -4,8 +4,9 @@
   "description": "FC3-admin-catalogo-de-videos-typescript",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "build": "rm -rf dist && tsc"
+    "test": "jest --coverage",
+    "build": "rm -rf dist && tsc",
+    "tsc:check": "tsc --noEmit"
   },
   "author": "",
   "license": "ISC",
