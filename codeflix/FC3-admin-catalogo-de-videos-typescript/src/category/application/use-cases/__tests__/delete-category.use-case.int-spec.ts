@@ -1,8 +1,8 @@
-import { NotFoundError } from '../../../shared/domain/errors/not-found.error';
-import { setupSequelize } from '../../../shared/infra/testing/helpers';
-import { Category, CategoryId } from '../../domain/category.aggregate';
-import { CategorySequelizeRepository } from '../../infra/db/sequelize/category-sequelize.repository';
-import { CategoryModel } from '../../infra/db/sequelize/category.model';
+import { NotFoundError } from '../../../../shared/domain/errors/not-found.error';
+import { setupSequelize } from '../../../../shared/infra/testing/helpers';
+import { Category, CategoryId } from '../../../domain/category.aggregate';
+import { CategorySequelizeRepository } from '../../../infra/db/sequelize/category-sequelize.repository';
+import { CategoryModel } from '../../../infra/db/sequelize/category.model';
 import { DeleteCategoryUseCase } from '../delete-category.use-case';
 
 describe('DeleteCategoryUseCase Integration Tests', () => {
