@@ -66,3 +66,17 @@ Abra o projeto via terminal/editor, instale as dependências e execute os testes
 ```
 cd dev-full-cycle-3.0/codeflix/FC3-admin-catalogo-de-videos-typescript && npm i && npm run test
 ```
+
+## 7 Codeflix - Cobertura de testes Typescript e Casos de uso de categoria
+
+Clone o repositório com o código desenvolvido
+
+```
+git clone https://github.com/maiconwte/dev-full-cycle-3.0.git
+```
+
+Abra o projeto via terminal/editor, instale as dependências e execute os testes
+
+```
+cd dev-full-cycle-3.0/codeflix/FC3-admin-catalogo-de-videos-typescript && npm i && npm run test && npm run tsc:check
+```
