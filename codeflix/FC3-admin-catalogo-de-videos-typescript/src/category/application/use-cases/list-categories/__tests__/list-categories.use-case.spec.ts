@@ -1,7 +1,7 @@
-import { Category } from '../../../domain/category.aggregate';
-import { CategorySearchResult } from '../../../domain/category.repository';
-import { CategoryInMemoryRepository } from '../../../infra/db/in-memory/category-in-memory.repository';
-import { CategoryOutputMapper } from '../common/category-output';
+import { Category } from '../../../../domain/category.aggregate';
+import { CategorySearchResult } from '../../../../domain/category.repository';
+import { CategoryInMemoryRepository } from '../../../../infra/db/in-memory/category-in-memory.repository';
+import { CategoryOutputMapper } from '../../common/category-output';
 import { ListCategoriesUseCase } from '../list-categories.use-case';
 
 describe('ListCategoriesUseCase Unit Tests', () => {

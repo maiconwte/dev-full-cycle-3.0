@@ -1,12 +1,12 @@
-import { ICategoryRepository } from '../../domain/category.repository';
+import { ICategoryRepository } from '../../../domain/category.repository';
 import {
   CategoryOutput,
   CategoryOutputMapper,
-} from './common/category-output';
-import { Category, CategoryId } from '../../domain/category.aggregate';
-import { NotFoundError } from '../../../shared/domain/errors/not-found.error';
-import { EntityValidationError } from '../../../shared/domain/validators/validation.error';
-import { IUseCase } from '../../../shared/application/use-case.interface';
+} from '../common/category-output';
+import { Category, CategoryId } from '../../../domain/category.aggregate';
+import { NotFoundError } from '../../../../shared/domain/errors/not-found.error';
+import { EntityValidationError } from '../../../../shared/domain/validators/validation.error';
+import { IUseCase } from '../../../../shared/application/use-case.interface';
 
 export class UpdateCategoryUseCase
   implements IUseCase<UpdateCategoryInput, UpdateCategoryOutput> {
