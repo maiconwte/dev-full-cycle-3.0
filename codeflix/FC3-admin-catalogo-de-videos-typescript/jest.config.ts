@@ -225,9 +225,17 @@ const config: Config = {
     },
   },
   testEnvironment: 'node',
-  setupFilesAfterEnv: ['./shared/infra/testing/expect-helpers.ts'],
+  setupFilesAfterEnv: ['./core/shared/infra/testing/expect-helpers.ts'],
   coverageProvider: 'v8',
   clearMocks: true,
+  //testRegex: '.*\\.spec\\.ts$',
+  // testRegex: '.*\\..*spec\\.ts$',
+  // transform: {
+  //   '^.+\\.(t|j)s$': 'ts-jest',
+  // },
+  //collectCoverageFrom: ['**/*.(t|j)s'],
+  //coverageDirectory: '../coverage',
+  //testEnvironment: 'node',
 };
 
 export default config;

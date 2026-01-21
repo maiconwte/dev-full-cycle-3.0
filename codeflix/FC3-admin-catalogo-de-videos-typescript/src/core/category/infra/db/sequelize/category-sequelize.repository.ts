@@ -19,7 +19,7 @@ export class CategorySequelizeRepository implements ICategoryRepository {
     },
   };
 
-  constructor(private categoryModel: typeof CategoryModel) { }
+  constructor(private categoryModel: typeof CategoryModel) {}
 
   async insert(entity: Category): Promise<void> {
     const modelProps = CategoryModelMapper.toModel(entity);
@@ -125,7 +125,7 @@ export class CategorySequelizeRepository implements ICategoryRepository {
       }),
       ...(props.sort && this.sortableFields.includes(props.sort)
         ? //? { order: [[props.sort, props.sort_dir]] }
-        { order: this.formatSort(props.sort, props.sort_dir!) }
+          { order: this.formatSort(props.sort, props.sort_dir!) }
         : { order: [['created_at', 'desc']] }),
       offset,
       limit,
@@ -144,9 +144,7 @@ export class CategorySequelizeRepository implements ICategoryRepository {
   private formatSort(sort: string, sort_dir: SortDirection) {
     const dialect = this.categoryModel.sequelize!.getDialect() as 'mysql';
 
-    // @ts-expect-error - TODO: fix this
     if (this.orderBy[dialect] && this.orderBy[dialect][sort]) {
-      // @ts-expect-error - TODO: fix this
       return this.orderBy[dialect][sort](sort_dir);
     }
     return [[sort, sort_dir]];
