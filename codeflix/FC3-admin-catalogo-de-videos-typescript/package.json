@@ -17,11 +17,18 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "nest": "docker compose exec app nest",
+    "nest:generate": "docker compose exec app nest generate",
+    "nest:build": "docker compose exec app nest build",
+    "nest:start": "docker compose exec app nest start",
+    "nest:start:dev": "docker compose exec app nest start --watch",
+    "container:sh": "docker compose exec app sh"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
+    "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^10.0.0",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
