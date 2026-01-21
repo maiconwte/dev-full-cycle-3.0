@@ -6,9 +6,10 @@ import {
   CategoryOutput,
   CategoryOutputMapper,
 } from '../common/category-output';
-// import { CreateCategoryInput } from './create-category.input';
+import { CreateCategoryInput } from './create-category.input';
 
-export class CreateCategoryUseCase implements IUseCase<CreateCategoryInput, CreateCategoryOutput> {
+export class CreateCategoryUseCase
+  implements IUseCase<CreateCategoryInput, CreateCategoryOutput> {
   constructor(private readonly categoryRepo: ICategoryRepository) { }
 
   async execute(input: CreateCategoryInput): Promise<CreateCategoryOutput> {
@@ -24,11 +25,4 @@ export class CreateCategoryUseCase implements IUseCase<CreateCategoryInput, Crea
   }
 }
 
-export type CreateCategoryInput = {
-  id?: string;
-  name: string;
-  description?: string | null;
-  is_active?: boolean;
-}
-
-export type CreateCategoryOutput = CategoryOutput
+export type CreateCategoryOutput = CategoryOutput;
