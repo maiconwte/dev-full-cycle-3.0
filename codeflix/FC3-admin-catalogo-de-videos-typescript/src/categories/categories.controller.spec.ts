@@ -1,35 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CategoriesController } from './categories.controller';
-import { CategorySequelizeRepository } from '@core/category/infra/db/sequelize/category-sequelize.repository';
-import { CategoryModel } from '@core/category/infra/db/sequelize/category.model';
-import { getModelToken, SequelizeModule } from '@nestjs/sequelize';
+import { DatabaseModule } from 'src/database/database.module';
+import { CategoriesModule } from './categories.module';
+import { ConfigModule } from 'src/config/config.module';
 
 describe('CategoriesController', () => {
   let controller: CategoriesController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [
-        SequelizeModule.forRoot({
-          dialect: 'sqlite',
-          storage: ':memory:',
-          logging: true,
-          models: [CategoryModel],
-          autoLoadModels: true,
-          synchronize: true,
-        }),
-        SequelizeModule.forFeature([CategoryModel]),
-      ],
-      controllers: [CategoriesController],
-      providers: [
-        {
-          provide: CategorySequelizeRepository,
-          useFactory: (categoryModel: typeof CategoryModel) => {
-            return new CategorySequelizeRepository(categoryModel);
-          },
-          inject: [getModelToken(CategoryModel)],
-        },
-      ],
+      imports: [ConfigModule.forRoot(), DatabaseModule, CategoriesModule],
     }).compile();
 
     controller = module.get<CategoriesController>(CategoriesController);
