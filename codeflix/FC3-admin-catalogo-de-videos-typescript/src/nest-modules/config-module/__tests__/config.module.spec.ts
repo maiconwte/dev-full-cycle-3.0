@@ -212,26 +212,37 @@ describe('Schema Unit Tests', () => {
   });
 });
 
-describe.only('ConfigModule Unit Tests', () => {
-  it('should throw an error when env vars are invalid', () => {
-    try {
+describe('ConfigModule Unit Tests', () => {
+  it('should throw an error when env vars are invalid', async () => {
+    await expect(
       Test.createTestingModule({
         imports: [
           ConfigModule.forRoot({
             envFilePath: join(__dirname, '.env.fake'),
           }),
         ],
-      });
-      fail('ConfigModule should throw an error when env vars are invalid');
-    } catch (e) {
-      expect(e.message).toContain('"DB_VENDOR" must be one of [mysql, sqlite]');
-    }
+      }).compile(),
+    ).rejects.toThrow('"DB_VENDOR" must be one of [mysql, sqlite]');
   });
 
-  it('should be valid', () => {
-    const module = Test.createTestingModule({
-      imports: [ConfigModule.forRoot()],
-    });
+  it('should be valid', async () => {
+    const module = await Test.createTestingModule({
+      imports: [
+        ConfigModule.forRoot({
+          ignoreEnvFile: true,
+          ignoreEnvVars: true,
+          validationSchema: null,
+          load: [
+            () => ({
+              DB_VENDOR: 'sqlite',
+              DB_HOST: ':memory:',
+              DB_LOGGING: false,
+              DB_AUTO_LOAD_MODELS: true,
+            }),
+          ],
+        }),
+      ],
+    }).compile();
 
     expect(module).toBeDefined();
   });
