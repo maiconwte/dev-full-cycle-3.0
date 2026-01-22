@@ -25,6 +25,7 @@ services:
       - 3000:3000
     volumes:
       - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
       - '/etc/timezone:/etc/timezone:ro'
       - '/etc/localtime:/etc/localtime:ro'
     extra_hosts:
@@ -44,4 +45,7 @@ services:
       - /var/lib/mysql
     security_opt:
       - seccomp:unconfined
+
+volumes:
+  node_modules:
 
