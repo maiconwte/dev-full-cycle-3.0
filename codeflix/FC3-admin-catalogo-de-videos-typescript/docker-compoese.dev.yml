@@ -1,20 +1,3 @@
-#
-# # version: '3'
-
-# OLD CONFIGURATION, USE TO AVOID CONFLICT WITH COMPILER ERRORS SHARING NODE_MODULES VOLUME
-# services:
-#   app:
-#     build: .
-#     command: ./.docker/start.sh
-#     ports:
-#       - 3000:3000
-#     volumes:
-#       - .:/home/node/app
-#       - node_modules:/home/node/app/node_modules
-
-# volumes:
-#   node_modules:
-
 # version: '3'
 
 services:
@@ -38,10 +21,7 @@ services:
     environment:
       - MYSQL_DATABASE=micro_videos
       - MYSQL_ROOT_PASSWORD=root
-    # volumes:
-    #   - ./.docker/mysql:/docker-entrypoint-initdb.d
-    tmpfs:
-      - /var/lib/mysql
+    volumes:
+      - ./.docker/dbdata:/var/lib/mysql:delegated
     security_opt:
       - seccomp:unconfined
-
