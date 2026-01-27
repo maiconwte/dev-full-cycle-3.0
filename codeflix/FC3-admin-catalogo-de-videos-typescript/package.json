@@ -33,6 +33,7 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/sequelize": "^10.0.0",
     "chance": "^1.1.13",
+    "class-transformer": "^0.5.1",
     "class-validator": "^0.14.2",
     "dotenv": "^17.2.3",
     "eventemitter2": "^6.4.9",
