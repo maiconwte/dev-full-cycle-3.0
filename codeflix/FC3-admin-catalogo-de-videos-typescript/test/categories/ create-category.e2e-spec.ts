@@ -22,14 +22,14 @@ describe('CategoriesController (e2e)', () => {
     describe('unauthenticated', () => {
       const app = startApp();
 
-      test.skip('should return 401 when not authenticated', () => {
+      test('should return 401 when not authenticated', () => {
         return request(app.app.getHttpServer())
           .post('/categories')
           .send({})
           .expect(401);
       });
 
-      test.skip('should return 403 when not authenticated as admin', () => {
+      test('should return 403 when not authenticated as admin', () => {
         return (
           request(app.app.getHttpServer())
             .post('/categories')
