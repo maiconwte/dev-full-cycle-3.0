@@ -11,8 +11,10 @@ import {
 import { SearchResult } from '../../../domain/repository/search-result';
 import { ValueObject } from '../../../domain/value-object';
 
-
-export abstract class InMemoryRepository<E extends Entity, EntityId extends ValueObject> implements IRepository<E, EntityId> {
+export abstract class InMemoryRepository<
+  E extends Entity,
+  EntityId extends ValueObject,
+> implements IRepository<E, EntityId> {
   items: E[] = [];
 
   async insert(entity: E): Promise<void> {
@@ -20,7 +22,9 @@ export abstract class InMemoryRepository<E extends Entity, EntityId extends Valu
   }
 
   async update(entity: E): Promise<void> {
-    const indexFound = this.items.findIndex(item => item.entity_id.equals(entity.entity_id));
+    const indexFound = this.items.findIndex((item) =>
+      item.entity_id.equals(entity.entity_id),
+    );
     if (indexFound === -1) {
       throw new NotFoundError(entity.entity_id, this.getEntity());
     }
@@ -28,7 +32,9 @@ export abstract class InMemoryRepository<E extends Entity, EntityId extends Valu
   }
 
   async delete(id: EntityId): Promise<void> {
-    const indexFound = this.items.findIndex(item => item.entity_id.equals(id));
+    const indexFound = this.items.findIndex((item) =>
+      item.entity_id.equals(id),
+    );
     if (indexFound === -1) {
       throw new NotFoundError(id, this.getEntity());
     }
@@ -49,10 +55,10 @@ export abstract class InMemoryRepository<E extends Entity, EntityId extends Valu
   }
 
   protected async _get(entity_id: EntityId) {
-    const item = this.items.find(item => item.entity_id.equals(entity_id));
+    const item = this.items.find((item) => item.entity_id.equals(entity_id));
 
     if (!item) {
-      return null
+      return null;
     }
 
     return item;
@@ -67,8 +73,8 @@ export abstract class InMemorySearchableRepository<
   Filter = string,
 >
   extends InMemoryRepository<E, EntityId>
-  implements ISearchableRepository<E, EntityId, Filter> {
-
+  implements ISearchableRepository<E, EntityId, Filter>
+{
   sortableFields: string[] = [];
 
   async search(props: SearchParams<Filter>): Promise<SearchResult<E>> {
@@ -118,8 +124,12 @@ export abstract class InMemorySearchableRepository<
     }
 
     return [...items].sort((a, b) => {
-      const aValue = custom_getter ? custom_getter(sort, a) : a[sort as keyof E];
-      const bValue = custom_getter ? custom_getter(sort, b) : b[sort as keyof E];
+      const aValue = custom_getter
+        ? custom_getter(sort, a)
+        : a[sort as keyof E];
+      const bValue = custom_getter
+        ? custom_getter(sort, b)
+        : b[sort as keyof E];
       if (aValue < bValue) {
         return sort_dir === 'asc' ? -1 : 1;
       }
