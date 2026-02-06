@@ -123,7 +123,7 @@ const config: Config = {
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
-  // rootDir: './src',
+  //rootDir: './src',
 
   // A list of paths to directories that Jest should use to search for files in
   // roots: [
@@ -228,14 +228,6 @@ const config: Config = {
   setupFilesAfterEnv: ['./core/shared/infra/testing/expect-helpers.ts'],
   coverageProvider: 'v8',
   clearMocks: true,
-  //testRegex: '.*\\.spec\\.ts$',
-  // testRegex: '.*\\..*spec\\.ts$',
-  // transform: {
-  //   '^.+\\.(t|j)s$': 'ts-jest',
-  // },
-  //collectCoverageFrom: ['**/*.(t|j)s'],
-  //coverageDirectory: '../coverage',
-  //testEnvironment: 'node',
 };
 
 export default config;
