@@ -29,7 +29,9 @@
     "nest:start": "docker compose exec app nest start",
     "nest:start:dev": "docker compose exec app nest start --watch",
     "container:sh": "docker compose exec app sh",
-    "container:bash": "docker compose exec -it app bash"
+    "container:bash": "docker compose exec -it app bash",
+    "db:mysql": "docker compose exec db mysql -u root -proot micro_videos",
+    "db:bash": "docker compose exec -it db bash"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
