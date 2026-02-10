@@ -36,7 +36,7 @@ describe('NotFoundErrorFilter Unit Tests', () => {
     return request(app.getHttpServer()).get('/stub').expect(404).expect({
       statusCode: 404,
       error: 'Not Found',
-      message: 'StubEntity not found with id fake id',
+      message: 'StubEntity Not Found using ID fake id',
     });
   });
 });
