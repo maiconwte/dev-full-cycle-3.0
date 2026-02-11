@@ -80,3 +80,33 @@ Abra o projeto via terminal/editor, instale as dependências e execute os testes
 ```
 cd dev-full-cycle-3.0/codeflix/FC3-admin-catalogo-de-videos-typescript && npm i && npm run test && npm run tsc:check
 ```
+
+## 8 Codeflix - Endpoints de Categoria e Cast Member
+
+Clone o repositório com o código desenvolvido
+
+```
+git clone https://github.com/maiconwte/dev-full-cycle-3.0.git
+```
+
+Para rodar os testes é necessário ter o container configurado para que a conexão com o db em memória funcione:
+
+```bash
+# entre no projeto do Codeflix
+cd dev-full-cycle-3.0/codeflix/FC3-admin-catalogo-de-videos-typescript
+
+# build da imagem do app
+docker compose build
+
+# instale as dependencias
+npm i
+
+# iniciar os containers do banco e do app
+docker compose up -d db app
+
+# entrar no container via sh
+docker compose exec app sh
+
+# executar os tests e validação do typescript
+npm run test:cov && npm run tsc:check
+```
