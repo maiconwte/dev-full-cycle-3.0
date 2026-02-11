@@ -1,11 +1,11 @@
-import { Either } from '@core/shared/domain/either';
-import { ISearchableRepository } from '@core/shared/domain/repository/repository-interface';
+import { Either } from '../../shared/domain/either';
+import { ISearchableRepository } from '../../shared/domain/repository/repository-interface';
 import {
   SearchParams as DefaultSearchParams,
   SearchParamsConstructorProps,
-} from '@core/shared/domain/repository/search-params';
-import { SearchResult as DefaultSearchResult } from '@core/shared/domain/repository/search-result';
-import { SearchValidationError } from '@core/shared/domain/validators/validation.error';
+} from '../../shared/domain/repository/search-params';
+import { SearchResult as DefaultSearchResult } from '../../shared/domain/repository/search-result';
+import { SearchValidationError } from '../../shared/domain/validators/validation.error';
 import {
   CastMemberType,
   CastMemberTypes,
@@ -77,7 +77,6 @@ export class CastMemberSearchParams extends DefaultSearchParams<CastMemberFilter
 
 export class CastMemberSearchResult extends DefaultSearchResult<CastMember> {}
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface ICastMemberRepository extends ISearchableRepository<
   CastMember,
   CastMemberId,

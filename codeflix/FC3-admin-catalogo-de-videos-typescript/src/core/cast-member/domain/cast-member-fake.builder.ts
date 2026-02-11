@@ -94,8 +94,7 @@ export class CastMemberFakeBuilder<TBuild = any> {
         castMember.validate();
         return castMember;
       });
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
+    // @ts-expect-error - This is an invalid cast member
     return this.countObjs === 1 ? (castMembers[0] as any) : castMembers;
   }
 
