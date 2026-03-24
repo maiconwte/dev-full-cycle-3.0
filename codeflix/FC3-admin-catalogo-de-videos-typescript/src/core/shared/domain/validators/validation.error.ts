@@ -13,7 +13,7 @@ export abstract class BaseValidationError extends Error {
   }
 }
 
-export class ValidationError extends Error { }
+export class ValidationError extends Error {}
 
 export class EntityValidationError extends BaseValidationError {
   constructor(public error: FieldsErrors[]) {

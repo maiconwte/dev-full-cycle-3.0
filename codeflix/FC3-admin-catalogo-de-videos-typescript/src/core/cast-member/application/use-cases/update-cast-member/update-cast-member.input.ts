@@ -29,8 +29,8 @@ export class UpdateCastMemberInput {
   constructor(props?: UpdateCastMemberInputConstructorProps) {
     if (!props) return;
     this.id = props.id;
-    props.name && (this.name = props.name);
-    props.type && (this.type = props.type);
+    if (props.name) this.name = props.name;
+    if (props.type) this.type = props.type;
   }
 }
 

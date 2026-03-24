@@ -27,7 +27,7 @@ export class UpdateCastMemberUseCase implements IUseCase<
       throw new NotFoundError(input.id, CastMember);
     }
 
-    input.name && castMember.changeName(input.name);
+    if (input.name) castMember.changeName(input.name);
 
     if (input.type) {
       const [type, errorCastMemberType] = CastMemberType.create(
@@ -36,7 +36,7 @@ export class UpdateCastMemberUseCase implements IUseCase<
 
       castMember.changeType(type);
 
-      errorCastMemberType &&
+      if (errorCastMemberType)
         castMember.notification.setError(errorCastMemberType.message, 'type');
     }
 

@@ -3,9 +3,10 @@ import { IUnitOfWork } from '../../../../shared/domain/repository/unit-of-work.i
 import { GenreId } from '../../../domain/genre.aggregate';
 import { IGenreRepository } from '../../../domain/genre.repository';
 
-export class DeleteGenreUseCase
-  implements IUseCase<DeleteGenreInput, DeleteGenreOutput>
-{
+export class DeleteGenreUseCase implements IUseCase<
+  DeleteGenreInput,
+  DeleteGenreOutput
+> {
   constructor(
     private uow: IUnitOfWork,
     private genreRepo: IGenreRepository,

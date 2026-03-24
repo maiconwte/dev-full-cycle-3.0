@@ -15,9 +15,11 @@ import {
   CategoryOutputMapper,
 } from '../common/category-output';
 
-export class ListCategoriesUseCase
-  implements IUseCase<ListCategoriesInput, ListCategoriesOutput> {
-  constructor(private categoryRepo: ICategoryRepository) { }
+export class ListCategoriesUseCase implements IUseCase<
+  ListCategoriesInput,
+  ListCategoriesOutput
+> {
+  constructor(private categoryRepo: ICategoryRepository) {}
 
   async execute(input: ListCategoriesInput): Promise<ListCategoriesOutput> {
     const params = new CategorySearchParams(input);

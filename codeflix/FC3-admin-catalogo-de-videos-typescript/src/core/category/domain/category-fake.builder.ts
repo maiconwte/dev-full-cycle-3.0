@@ -86,8 +86,10 @@ export class CategoryFakeBuilder<TBuild = any> {
         category.validate();
         return category;
       });
-    // @ts-expect-error
-    return this.countObjs === 1 ? (categories[0] as any) : categories;
+
+    return this.countObjs === 1
+      ? (categories[0] as TBuild)
+      : (categories as unknown as TBuild);
   }
 
   get category_id() {

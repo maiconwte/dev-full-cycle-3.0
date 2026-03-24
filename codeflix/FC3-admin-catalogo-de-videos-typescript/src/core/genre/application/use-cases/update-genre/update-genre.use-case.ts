@@ -28,7 +28,7 @@ export class UpdateGenreUseCase implements IUseCase<
       throw new NotFoundError(input.id, Genre);
     }
 
-    input.name && genre.changeName(input.name);
+    if (input.name) genre.changeName(input.name);
 
     if (input.is_active === true) {
       genre.activate();
@@ -47,13 +47,14 @@ export class UpdateGenreUseCase implements IUseCase<
         )
       ).asArray();
 
-      categoriesId && genre.syncCategoriesId(categoriesId);
+      if (categoriesId) genre.syncCategoriesId(categoriesId);
 
-      errorsCategoriesId &&
+      if (errorsCategoriesId) {
         notification.setError(
           errorsCategoriesId.map((e) => e.message),
           'categories_id',
         );
+      }
     }
 
     if (genre.notification.hasErrors()) {

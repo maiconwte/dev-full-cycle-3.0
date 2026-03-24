@@ -1,13 +1,13 @@
-import { Entity } from "../../../../domain/entity";
-import { NotFoundError } from "../../../../domain/errors/not-found.error";
-import { Uuid } from "../../../../domain/value-objects/uuid.vo";
-import { InMemoryRepository } from "../in-memory.repository";
+import { Entity } from '../../../../domain/entity';
+import { NotFoundError } from '../../../../domain/errors/not-found.error';
+import { Uuid } from '../../../../domain/value-objects/uuid.vo';
+import { InMemoryRepository } from '../in-memory.repository';
 
 type StubEntityProps = {
   entity_id?: Uuid;
   name: string;
   price: number;
-}
+};
 
 class StubEntity extends Entity {
   entity_id: Uuid;
@@ -26,7 +26,7 @@ class StubEntity extends Entity {
       entity_id: this.entity_id.id,
       name: this.name,
       price: this.price,
-    }
+    };
   }
 }
 
@@ -50,9 +50,11 @@ describe('InMemoryRepository Unit Tests', () => {
   it('should throw error when entity is not found', async () => {
     const entity = new StubEntity({
       name: 'Entity 1',
-      price: 100
+      price: 100,
     });
-    await expect(() => repository.update(entity)).rejects.toThrow(new NotFoundError(entity.entity_id, StubEntity));
+    await expect(() => repository.update(entity)).rejects.toThrow(
+      new NotFoundError(entity.entity_id, StubEntity),
+    );
   });
 
   describe('insert', () => {
@@ -60,7 +62,7 @@ describe('InMemoryRepository Unit Tests', () => {
       const entity = new StubEntity({
         entity_id: new Uuid(),
         name: 'Entity 1',
-        price: 100
+        price: 100,
       });
       await repository.insert(entity);
 
@@ -72,12 +74,12 @@ describe('InMemoryRepository Unit Tests', () => {
         new StubEntity({
           entity_id: new Uuid(),
           name: 'Entity 1',
-          price: 100
+          price: 100,
         }),
         new StubEntity({
           entity_id: new Uuid(),
           name: 'Entity 2',
-          price: 100
+          price: 100,
         }),
       ];
       await repository.bulkInsert(entities);
@@ -92,7 +94,7 @@ describe('InMemoryRepository Unit Tests', () => {
       const entity = new StubEntity({
         entity_id: new Uuid(),
         name: 'Entity 1',
-        price: 100
+        price: 100,
       });
 
       await repository.insert(entity);
@@ -100,7 +102,7 @@ describe('InMemoryRepository Unit Tests', () => {
       const entityUpdated = new StubEntity({
         entity_id: entity.entity_id,
         name: 'Entity Updated',
-        price: 100
+        price: 100,
       });
 
       await repository.update(entityUpdated);
@@ -114,7 +116,7 @@ describe('InMemoryRepository Unit Tests', () => {
       const entity = new StubEntity({
         entity_id: new Uuid(),
         name: 'Entity 1',
-        price: 100
+        price: 100,
       });
 
       await repository.insert(entity);
@@ -130,7 +132,7 @@ describe('InMemoryRepository Unit Tests', () => {
       const entity = new StubEntity({
         entity_id: new Uuid(),
         name: 'Entity 1',
-        price: 100
+        price: 100,
       });
 
       await repository.insert(entity);
@@ -145,7 +147,7 @@ describe('InMemoryRepository Unit Tests', () => {
         new StubEntity({
           entity_id: new Uuid(),
           name: 'Entity 1',
-          price: 100
+          price: 100,
         }),
       ];
       await repository.bulkInsert(entities);

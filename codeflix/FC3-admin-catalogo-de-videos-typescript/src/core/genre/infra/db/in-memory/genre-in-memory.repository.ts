@@ -34,8 +34,8 @@ export class GenreInMemoryRepository
       return filter.name && filter.categories_id
         ? containsName && containsCategoriesId
         : filter.name
-        ? containsName
-        : containsCategoriesId;
+          ? containsName
+          : containsCategoriesId;
     });
   }
 

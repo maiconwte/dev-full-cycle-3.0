@@ -7,9 +7,11 @@ import {
   CategoryOutputMapper,
 } from '../common/category-output';
 
-export class GetCategoryUseCase
-  implements IUseCase<GetCategoryInput, GetCategoryOutput> {
-  constructor(private categoryRepo: ICategoryRepository) { }
+export class GetCategoryUseCase implements IUseCase<
+  GetCategoryInput,
+  GetCategoryOutput
+> {
+  constructor(private categoryRepo: ICategoryRepository) {}
 
   async execute(input: GetCategoryInput): Promise<GetCategoryOutput> {
     const categoryId = new CategoryId(input.id);

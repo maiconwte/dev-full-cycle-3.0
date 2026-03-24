@@ -9,9 +9,11 @@ import { EntityValidationError } from '../../../../shared/domain/validators/vali
 import { IUseCase } from '../../../../shared/application/use-case.interface';
 import { UpdateCategoryInput } from './update-category.input';
 
-export class UpdateCategoryUseCase
-  implements IUseCase<UpdateCategoryInput, UpdateCategoryOutput> {
-  constructor(private categoryRepo: ICategoryRepository) { }
+export class UpdateCategoryUseCase implements IUseCase<
+  UpdateCategoryInput,
+  UpdateCategoryOutput
+> {
+  constructor(private categoryRepo: ICategoryRepository) {}
 
   async execute(input: UpdateCategoryInput): Promise<UpdateCategoryOutput> {
     const categoryId = new CategoryId(input.id);
@@ -21,7 +23,7 @@ export class UpdateCategoryUseCase
       throw new NotFoundError(input.id, Category);
     }
 
-    input.name && category.changeName(input.name);
+    if (input.name) category.changeName(input.name);
 
     if ('description' in input) {
       category.changeDescription(input.description);

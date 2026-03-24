@@ -9,7 +9,8 @@ import { Uuid } from '../../../../shared/domain/value-objects/uuid.vo';
 
 export class CategoryInMemoryRepository
   extends InMemorySearchableRepository<Category, Uuid>
-  implements ICategoryRepository {
+  implements ICategoryRepository
+{
   sortableFields: string[] = ['name', 'created_at'];
 
   protected async applyFilter(
