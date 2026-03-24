@@ -13,6 +13,7 @@ export class UnitOfWorkSequelize implements IUnitOfWork {
       this.transaction = await this.sequelize.transaction();
     }
   }
+
   async commit(): Promise<void> {
     this.validateTransaction();
     await this.transaction!.commit();
@@ -63,6 +64,7 @@ export class UnitOfWorkSequelize implements IUnitOfWork {
   addAggregateRoot(aggregateRoot: AggregateRoot): void {
     this.aggregateRoots.add(aggregateRoot);
   }
+
   getAggregateRoots(): AggregateRoot[] {
     return [...this.aggregateRoots];
   }
