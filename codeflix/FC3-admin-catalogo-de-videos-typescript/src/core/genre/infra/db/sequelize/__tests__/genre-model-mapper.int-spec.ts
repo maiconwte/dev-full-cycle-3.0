@@ -20,7 +20,6 @@ describe('GenreModelMapper Unit Tests', () => {
     const arrange = [
       {
         makeModel: () => {
-          //@ts-expect-error - an invalid genre
           return GenreModel.build({
             genre_id: '9366b7dc-2d71-4799-b91c-c64adb205104',
             name: 't'.repeat(256),

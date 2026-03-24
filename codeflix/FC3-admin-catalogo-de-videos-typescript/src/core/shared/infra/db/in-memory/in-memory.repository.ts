@@ -51,6 +51,20 @@ export abstract class InMemoryRepository<
     return this.items;
   }
 
+  async findByIds(ids: EntityId[]): Promise<E[]> {
+    if (!ids.length) {
+      return [];
+    }
+    const result: E[] = [];
+    for (const id of ids) {
+      const item = this.items.find((entity) => entity.entity_id.equals(id));
+      if (item) {
+        result.push(item);
+      }
+    }
+    return result;
+  }
+
   async bulkInsert(entities: E[]): Promise<void> {
     this.items.push(...entities);
   }

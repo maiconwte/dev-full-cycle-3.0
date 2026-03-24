@@ -13,9 +13,10 @@ import { ListGenresInput } from './list-genres.input';
 import { IUseCase } from '../../../../shared/application/use-case.interface';
 import { CategoryId } from '../../../../category/domain/category.aggregate';
 
-export class ListGenresUseCase
-  implements IUseCase<ListGenresInput, ListGenresOutput>
-{
+export class ListGenresUseCase implements IUseCase<
+  ListGenresInput,
+  ListGenresOutput
+> {
   constructor(
     private genreRepo: IGenreRepository,
     private categoryRepo: ICategoryRepository,
@@ -38,9 +39,16 @@ export class ListGenresUseCase
       },
       [],
     );
-    //TODO - retirar duplicados
+    const seen = new Set<string>();
+    const uniqueCategoryIds = categoriesIdRelated.filter((id) => {
+      if (seen.has(id.id)) {
+        return false;
+      }
+      seen.add(id.id);
+      return true;
+    });
     const categoriesRelated =
-      await this.categoryRepo.findByIds(categoriesIdRelated);
+      await this.categoryRepo.findByIds(uniqueCategoryIds);
 
     const items = _items.map((i) => {
       const categoriesOfGenre = categoriesRelated.filter((c) =>

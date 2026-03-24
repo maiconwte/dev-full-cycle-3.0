@@ -5,9 +5,10 @@ import { Genre, GenreId } from '../../../domain/genre.aggregate';
 import { IGenreRepository } from '../../../domain/genre.repository';
 import { GenreOutput, GenreOutputMapper } from '../common/genre-output';
 
-export class GetGenreUseCase
-  implements IUseCase<GetGenreInput, GetGenreOutput>
-{
+export class GetGenreUseCase implements IUseCase<
+  GetGenreInput,
+  GetGenreOutput
+> {
   constructor(
     private genreRepo: IGenreRepository,
     private categoryRepo: ICategoryRepository,
