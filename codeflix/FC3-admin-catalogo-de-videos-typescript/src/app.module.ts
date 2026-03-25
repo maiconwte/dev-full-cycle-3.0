@@ -3,6 +3,7 @@ import { CategoriesModule } from './nest-modules/categories-module/categories.mo
 import { CastMembersModule } from './nest-modules/cast-members-module/cast-members.module';
 import { DatabaseModule } from './nest-modules/database-module/database.module';
 import { ConfigModule } from './nest-modules/config-module/config.module';
+import { GenresModule } from './nest-modules/genres-module/genres.module';
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { ConfigModule } from './nest-modules/config-module/config.module';
     DatabaseModule,
     CategoriesModule,
     CastMembersModule,
+    GenresModule,
   ],
   controllers: [],
   providers: [],
